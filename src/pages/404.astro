@@ -1,0 +1,51 @@
+---
+import DynamicImage from "../components/DynamicImage.astro";
+
+const slug = Astro.params;
+
+export interface Props {
+  slug: string;
+}
+
+export async function getStaticPaths() {
+  return [{ params: { slug: "404" } }];
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/logo-dummy.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Page Not Found | Moluska</title>
+  </head>
+  <body>
+    <div class="h-screen relative bg-cover bg-no-repeat bg-center">
+      <div class="absolute z-[5] h-screen w-full">
+        <div class="relative h-full w-full">
+          <DynamicImage imagePath="/src/assets/404.jpg" altText="404" />
+          <div
+            class="absolute inset-0 z-[3] bg-gradient-to-b"
+            style="background: linear-gradient(180deg, rgba(1, 1, 1, 0.5) 0%, rgba(0, 0, 0, 0.4) 25%, rgba(255, 255, 255, 0) 100%);"
+          >
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col items-center justify-center h-screen z-10 relative"
+      >
+        <div
+          class="bg-gray-300/75 flex flex-col items-center justify-center p-4 rounded-md"
+        >
+          <h1 class="text-4xl font-semibold mb-5">404 | Whooops!</h1>
+          <p class="text-xl mb-5">Sepertinya anda tersesat kawan</p>
+          <a
+            class="px-4 py-2 bg-slate-800 text-white rounded-md hover:bg-slate-600"
+            href="/">Go Home</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

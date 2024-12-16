@@ -1,26 +1,41 @@
-<div class="relative max-w-sm shadow">
+---
+import { slugify } from "../lib/utils";
+
+const { picture, title, urutan } = Astro.props;
+
+interface Props {
+  picture: string;
+  title: string;
+  urutan: number;
+}
+---
+
+<div class="relative max-w-xs shadow">
   <div
     class="absolute top-0 right-0 ml-auto sm:w-12 sm:h-12 w-8 h-8 bg-white z-[15]"
   >
     <span
-      class="w-full h-full flex justify-center items-center text-slate-600 text-sm font-bold"
-      >20</span
+      class="w-full h-full flex justify-center items-center text-slate-800 text-base font-bold"
+      >{urutan}</span
     >
   </div>
   <div>
-    <a href="#" class="aspect-square block overflow-hidden">
+    <a
+      href={`/katalog/${slugify(title)}`}
+      class="aspect-square block overflow-hidden"
+    >
       <img
-        src="/src/assets/image/furnitur-3.jpg"
+        src={picture}
         alt=""
         class="aspect-square object-cover w-full h-full"
       />
     </a>
     <div class="p-2">
-      <a href="#">
+      <a href={`/katalog/${slugify(title)}`}>
         <h5
           class="mb-2 text-xl font-bold tracking-tight text-slate-600 hover:underline"
         >
-          Chair
+          {title}
         </h5>
       </a>
       <p class="mb-2 font-normal text-gray-700 text-xs text-justify">
@@ -28,7 +43,7 @@
         ducimus?
       </p>
       <a
-        href="#"
+        href={`/katalog/${slugify(title)}`}
         class="inline-flex items-center py-2 text-sm font-medium text-center text-slate-600 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 hover:underline dark:focus:ring-blue-800"
       >
         <svg

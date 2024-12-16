@@ -1,6 +1,25 @@
 ---
 import Card from "../components/Card.astro";
 import MainLayout from "../layouts/MainLayout.astro";
+
+const cards = [
+  {
+    title: "Sofa",
+    picture: "/src/assets/image/furnitur-1.jpg",
+  },
+  {
+    title: "Sofa Set",
+    picture: "/src/assets/image/furnitur-2.jpg",
+  },
+  {
+    title: "Kursi",
+    picture: "/src/assets/image/furnitur-3.jpg",
+  },
+  {
+    title: "Meja Set",
+    picture: "/src/assets/image/furnitur-4.jpg",
+  },
+];
 ---
 
 <MainLayout>
@@ -18,9 +37,6 @@ import MainLayout from "../layouts/MainLayout.astro";
     </div>
   </div>
   <div class="container grid sm:grid-cols-4 grid-cols-2 gap-x-8 gap-y-4 mt-20">
-    <Card />
-    <Card />
-    <Card />
-    <Card />
+    {cards.map((item) => <Card {...item} urutan={cards.indexOf(item) + 1} />)}
   </div>
 </MainLayout>
