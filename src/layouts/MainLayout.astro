@@ -21,16 +21,15 @@ import Navbar from "../components/Navbar.astro";
     <Navbar />
 
     <main class="flex">
-      <aside class="sm:block hidden w-full max-w-[20vw]">
-        <section
-          class="container sm:flex hidden w-full max-w-[20vw] text-sm h-screen fixed items-center"
-        >
+      <aside class="mx-auto pl-4 sm:block hidden w-full max-w-[13vw]">
+        <section class="sm:flex hidden text-sm h-screen fixed items-center">
           <div class="w-full" id="side-nav">
             <div class="flex flex-col gap-y-4">
               <div>
-                <p class="font-semibold text-slate-700 uppercase">Contact</p>
-                <a href="mailto:wkwk@yandex.ru" class="text-slate-500 text-sm"
-                  >wkwk@yandex.ru</a
+                <p class="font-semibold text-slate-700 uppercase">Contact Us</p>
+                <a
+                  href="https://wa.me/628212345678"
+                  class="text-slate-500 text-sm">+62 82 1234 5678</a
                 >
               </div>
               <div>
@@ -41,21 +40,30 @@ import Navbar from "../components/Navbar.astro";
                 <p class="font-semibold text-slate-700 uppercase">Instagram</p>
                 <a
                   href="https://instagram.com/moluska"
-                  class="text-slate-500 text-sm">@moluska</a
+                  class="text-slate-500 text-sm"
+                >
+                  @moluska</a
                 >
               </div>
             </div>
+            <div class="flex flex-col gap-y-2"></div>
           </div>
         </section>
       </aside>
-      <section class="container w-full mt-24">
+      <section class="container w-full mt-16">
         <div class="relative">
           <div
-            class="absolute top-0 right-0 ml-auto w-36 h-[50dvh] bg-slate-200 rounded-l-xl -z-10"
+            class="fixed top-0 right-0 mt-16 ml-auto sm:w-36 w-12 h-[50dvh] bg-slate-200 rounded-l-xl -z-10"
+            id="ornament"
           >
           </div>
           <div class="relative z-[9]">
             <slot />
+          </div>
+          <div
+            class="fixed bottom-8 left-0 mr-auto sm:w-12 w-4 sm:h-[25dvh] h-24 bg-slate-200 rounded-r-xl -z-10"
+            id="ornament"
+          >
           </div>
         </div>
       </section>
@@ -67,7 +75,6 @@ import Navbar from "../components/Navbar.astro";
     body {
       margin: 0;
       width: 100%;
-      height: 2000px;
     }
   </style>
 </html>

@@ -4,11 +4,9 @@ import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout>
-  <div
-    class="flex flex-wrap sm:flex-nowrap max-w-2xl gap-x-4 items-start mt-20"
-  >
+  <div class="flex flex-wrap sm:flex-nowrap max-w-2xl gap-4 items-start mt-12">
     <div>
-      <h1 class="text-5xl font-bold text-slate-800">Moluska</h1>
+      <h1 class="sm:text-5xl text-4xl font-bold text-slate-800">Moluska</h1>
     </div>
     <div class="text-slate-600 text-sm">
       <p class="mb-4">
@@ -19,7 +17,7 @@ import MainLayout from "../layouts/MainLayout.astro";
       <a href="/" class="font-semibold hover:underline">{">"} learn more</a>
     </div>
   </div>
-  <div class="container grid grid-cols-4 gap-x-8 mt-20">
+  <div class="container grid sm:grid-cols-4 grid-cols-2 gap-x-8 gap-y-4 mt-20">
     <Card />
     <Card />
     <Card />
