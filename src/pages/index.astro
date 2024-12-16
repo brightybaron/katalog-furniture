@@ -1,0 +1,28 @@
+---
+import Card from "../components/Card.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout>
+  <div
+    class="flex flex-wrap sm:flex-nowrap max-w-2xl gap-x-4 items-start mt-20"
+  >
+    <div>
+      <h1 class="text-5xl font-bold text-slate-800">Moluska</h1>
+    </div>
+    <div class="text-slate-600 text-sm">
+      <p class="mb-4">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum
+        explicabo sunt itaque ex architecto delectus, nobis perferendis saepe,
+        libero eaque quam! Aspernatur, iusto pariatur. Molestiae.
+      </p>
+      <a href="/" class="font-semibold hover:underline">{">"} learn more</a>
+    </div>
+  </div>
+  <div class="container grid grid-cols-4 gap-x-8 mt-20">
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+  </div>
+</MainLayout>

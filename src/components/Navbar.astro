@@ -1,0 +1,131 @@
+---
+import Search from "./Search.astro";
+
+const listmenu = [
+  { page: "Home", path: "/" },
+  { page: "Katalog", path: "/katalog" },
+  { page: "Studio", path: "/studio" },
+];
+
+// const props = Astro.props;
+---
+
+<nav class="fixed top-0 w-full transition-all duration-300 z-10" id="navbar">
+  <div class="container md:px-12">
+    <div class="flex items-center justify-between h-24">
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center">
+          <img
+            src="/logo-dummy.png"
+            alt="logo"
+            class="h-10 w-10 inline-block mx-2 p-[2px] rounded-full bg-white"
+          />
+          <span
+            class="text-slate-600 hover:text-slate-800 font-bold text-xl after:content-[''] after:block after:border-b-2 after:transition-all after:duration-300 after:scale-x-0 after:origin-center hover:after:scale-x-100"
+            >Moluska</span
+          >
+        </a>
+      </div>
+      <div class="hidden md:block">
+        <div class="flex items-center gap-x-8">
+          {
+            listmenu.map((item) => (
+              <a
+                href={item.path}
+                class="uppercase font-semibold text-slate-400 hover:text-slate-600 after:content-[''] after:block after:border-b-2 after:transition-all after:duration-300 after:scale-x-0 after:origin-center hover:after:scale-x-100"
+              >
+                {item.page}
+              </a>
+            ))
+          }
+
+          <Search />
+        </div>
+      </div>
+      <div class="md:hidden">
+        <button
+          id="toggleButton"
+          class="block lg:hidden text-slate-700 focus:outline-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              id="menuIcon"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+<div
+  id="offcanvas"
+  class="transition-transform duration-300 ease-linear bg-gray-900 text-white fixed top-0 left-0 w-10/12 flex flex-col p-6 sm:hidden gap-y-6 rounded z-[1035] -translate-x-[100%] invisible"
+>
+  <div class="flex justify-between items-center">
+    <a
+      href="/"
+      class="flex items-center align-middle text-white font-bold text-xl"
+    >
+      <img
+        src="/logo-dummy.png"
+        alt="logo"
+        class="h-10 w-10 inline-block mx-2 p-[2px]"
+      />
+      Moluska
+    </a>
+  </div>
+  {
+    listmenu.map((item) => (
+      <button
+        class="uppercase font-medium text-white bg-gradient-to-r from-teal-500 to-teal-900 px-2 py-2 rounded shadow-lg text-left"
+        onClick={() => {
+          window.location.href = item.path;
+        }}
+      >
+        {item.page}
+      </button>
+    ))
+  }
+</div>
+
+<script>
+  const toggleButton = document.getElementById("toggleButton");
+  const offcanvas = document.getElementById("offcanvas");
+  const menuIcon = document.getElementById("menuIcon");
+  const navbar = document.getElementById("navbar");
+
+  let isMenuOpen = false;
+
+  if (toggleButton && offcanvas && menuIcon) {
+    toggleButton.addEventListener("click", () => {
+      isMenuOpen = !isMenuOpen;
+      if (isMenuOpen) {
+        offcanvas.classList.remove("invisible", "-translate-x-[100%]");
+        offcanvas.classList.add("visible", "translate-x-0");
+        menuIcon.setAttribute("d", "M6 18L18 6M6 6l12 12");
+      } else {
+        offcanvas.classList.add("invisible", "-translate-x-[100%]");
+        offcanvas.classList.remove("visible", "translate-x-0");
+        menuIcon.setAttribute("d", "M4 6h16M4 12h16m-7 6h7");
+      }
+    });
+  } else {
+    console.error("Toggle button, offcanvas, or menu icon not found.");
+  }
+
+  if (navbar) {
+    window.addEventListener("scroll", () => {
+      const scrollPosition = window.scrollY > 20;
+      navbar.classList.toggle("bg-white", scrollPosition);
+    });
+  }
+</script>

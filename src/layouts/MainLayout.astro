@@ -1,0 +1,73 @@
+---
+import Navbar from "../components/Navbar.astro";
+---
+
+<!doctype html>
+<html lang="en" class="font-sans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>Moluska</title>
+  </head>
+  <body>
+    <Navbar />
+
+    <main class="flex">
+      <aside class="sm:block hidden w-full max-w-[20vw]">
+        <section
+          class="container sm:flex hidden w-full max-w-[20vw] text-sm h-screen fixed items-center"
+        >
+          <div class="w-full" id="side-nav">
+            <div class="flex flex-col gap-y-4">
+              <div>
+                <p class="font-semibold text-slate-700 uppercase">Contact</p>
+                <a href="mailto:wkwk@yandex.ru" class="text-slate-500 text-sm"
+                  >wkwk@yandex.ru</a
+                >
+              </div>
+              <div>
+                <p class="font-semibold text-slate-700 uppercase">Address</p>
+                <p class="text-slate-500 text-sm">ул. Пушкина, 1</p>
+              </div>
+              <div>
+                <p class="font-semibold text-slate-700 uppercase">Instagram</p>
+                <a
+                  href="https://instagram.com/moluska"
+                  class="text-slate-500 text-sm">@moluska</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+      </aside>
+      <section class="container w-full mt-24">
+        <div class="relative">
+          <div
+            class="absolute top-0 right-0 ml-auto w-36 h-[50dvh] bg-slate-200 rounded-l-xl -z-10"
+          >
+          </div>
+          <div class="relative z-[9]">
+            <slot />
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 2000px;
+    }
+  </style>
+</html>
