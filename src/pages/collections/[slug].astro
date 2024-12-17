@@ -1,0 +1,62 @@
+---
+import MainLayout from "@layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const datas = await fetch("http://localhost:4321/data.json").then((res) =>
+    res.json()
+  );
+
+  return datas.map((data: any) => ({
+    params: { slug: data.slug },
+    props: { data },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const data = await fetch("http://localhost:4321/data.json").then((res) =>
+  res.json()
+);
+
+const myData = data.find((entry: any) => entry.slug === slug);
+
+if (!myData) {
+  return Astro.redirect("/404");
+}
+
+const content: any = myData;
+
+export const prerender = true;
+---
+
+<MainLayout pageTitle={content.title}>
+  <h1
+    class="sm:text-4xl text-3xl font-bold text-slate-800 after:content-[''] after:block after:border-b-4 after:border-b-slate-300 after:mt-1 w-fit"
+  >
+    {content.title}
+  </h1>
+  <div class="grid sm:grid-cols-3 grid-cols-1 mt-4">
+    <div class="col-span-1 mx-auto max-w-[300px] w-full h-full">
+      <Image
+        src={content.picture}
+        alt={`${content.title} image`}
+        width={400}
+        height={400}
+        class="aspect-square object-cover w-full h-full"
+      />
+    </div>
+    <div class="container col-span-2 sm:mt-0 mt-4">
+      <p class="mb-2 font-bold tracking-tight text-slate-600 list-item">
+        Harga :
+        <span class="text-teal-700 underline">
+          Rp. {content.harga}
+        </span>
+      </p>
+      <p class="font-bold tracking-tight text-slate-600 list-item">Deskripsi</p>
+      <p class="text-slate-600 text-sm">
+        {content.deskripsi}
+      </p>
+    </div>
+  </div>
+</MainLayout>

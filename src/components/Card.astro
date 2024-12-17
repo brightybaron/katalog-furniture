@@ -24,7 +24,7 @@ interface Props {
   </div>
   <div>
     <a
-      href={`/katalog/${slugify(title)}`}
+      href={`/collections/${slugify(title)}`}
       class="aspect-square block overflow-hidden"
     >
       <Image
@@ -41,7 +41,7 @@ interface Props {
       /> -->
     </a>
     <div class="p-2">
-      <a href={`/katalog/${slugify(title)}`}>
+      <a href={`/collections/${slugify(title)}`}>
         <h5
           class="mb-2 text-xl font-bold tracking-tight text-slate-600 hover:underline"
         >
@@ -57,7 +57,7 @@ interface Props {
         {deskripsi}
       </p>
       <a
-        href={`/katalog/${slugify(title)}`}
+        href={`/collections/${slugify(title)}`}
         class="inline-flex items-center py-2 text-sm font-medium text-center text-slate-600 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 hover:underline dark:focus:ring-blue-800"
       >
         <svg
