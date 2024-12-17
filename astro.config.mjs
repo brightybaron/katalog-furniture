@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 
+import vercel from '@astrojs/vercel';
+
 const SERVER_PORT = 4321;
 // the url to access your blog during local development
 const LOCALHOST_URL = `http://localhost:${SERVER_PORT}`;
@@ -22,6 +24,8 @@ export default defineConfig({
   server: {
     port: SERVER_PORT
   },
+
   site: BASE_URL,
-  integrations: [tailwind(), react()]
+  integrations: [tailwind(), react()],
+  adapter: vercel()
 });
