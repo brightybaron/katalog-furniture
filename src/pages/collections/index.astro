@@ -7,7 +7,7 @@ import gbr3 from "@assets/image/furnitur-3.jpg";
 import gbr4 from "@assets/image/furnitur-4.jpg";
 import gbr5 from "@assets/image/furnitur-5.jpg";
 
-const cards = [
+const data = [
   {
     title: "Sofa",
     picture: gbr1,
@@ -48,6 +48,10 @@ const cards = [
     </h1>
   </div>
   <div class="container grid sm:grid-cols-4 grid-cols-2 gap-4 mt-20">
-    {cards.map((item) => <Card {...item} urutan={cards.indexOf(item) + 1} />)}
+    {
+      data.map((item: any) => (
+        <Card {...item} urutan={data.indexOf(item) + 1} />
+      ))
+    }
   </div>
 </MainLayout>

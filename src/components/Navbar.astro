@@ -2,7 +2,7 @@
 import { slugify } from "../lib/utils";
 import Search from "@components/Search.astro";
 
-const listmenu = ["home", "collections", "studio"];
+const listmenu: string[] = ["home", "collections", "studio"];
 ---
 
 <nav class="fixed top-0 w-full transition-all duration-300 z-10" id="navbar">
@@ -24,7 +24,7 @@ const listmenu = ["home", "collections", "studio"];
       <div class="hidden md:block">
         <div class="flex items-center gap-x-8">
           {
-            listmenu.map((item) => (
+            listmenu.map((item: string) => (
               <a
                 href={item === "home" ? "/" : slugify(item)}
                 class="uppercase font-semibold text-slate-400 hover:text-slate-600 after:content-[''] after:block after:border-b-2 after:transition-all after:duration-300 after:scale-x-0 after:origin-center hover:after:scale-x-100"
@@ -79,7 +79,7 @@ const listmenu = ["home", "collections", "studio"];
     </a>
   </div>
   {
-    listmenu.map((item) => (
+    listmenu.map((item: string) => (
       <a
         class="uppercase font-medium text-white bg-gradient-to-r from-teal-500 to-teal-900 px-2 py-2 rounded shadow-lg text-left"
         href={item === "home" ? "/" : slugify(item)}
@@ -91,10 +91,10 @@ const listmenu = ["home", "collections", "studio"];
 </div>
 
 <script>
-  const toggleButton = document.getElementById("toggleButton");
-  const offcanvas = document.getElementById("offcanvas");
-  const menuIcon = document.getElementById("menuIcon");
-  const navbar = document.getElementById("navbar");
+  const toggleButton = document.getElementById("toggleButton") as HTMLElement;
+  const offcanvas = document.getElementById("offcanvas") as HTMLElement;
+  const menuIcon = document.getElementById("menuIcon") as HTMLElement;
+  const navbar = document.getElementById("navbar") as HTMLElement;
 
   let isMenuOpen = false;
 
