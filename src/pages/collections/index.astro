@@ -27,24 +27,22 @@ const cards = [
     deskripsi:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
   },
+  {
+    title: "Chair",
+    picture: "/src/assets/image/furnitur-5.jpg",
+    deskripsi:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
+  },
 ];
 ---
 
-<MainLayout pageTitle="Home">
+<MainLayout pageTitle="Collections">
   <div class="flex flex-wrap sm:flex-nowrap max-w-2xl gap-4 items-start mt-12">
-    <div>
-      <h1 class="sm:text-5xl text-4xl font-bold text-slate-800">Moluska</h1>
-    </div>
-    <div class="text-slate-600 text-sm">
-      <p class="mb-4">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum
-        explicabo sunt itaque ex architecto delectus, nobis perferendis saepe,
-        libero eaque quam! Aspernatur, iusto pariatur. Molestiae.
-      </p>
-      <a href="/" class="font-semibold hover:underline">{">"} learn more</a>
-    </div>
+    <h1 class="sm:text-5xl text-4xl font-bold text-slate-800">
+      Our Collections
+    </h1>
   </div>
-  <div class="container grid sm:grid-cols-4 grid-cols-2 gap-x-8 gap-y-4 mt-20">
+  <div class="container grid sm:grid-cols-4 grid-cols-2 gap-4 mt-20">
     {cards.map((item) => <Card {...item} urutan={cards.indexOf(item) + 1} />)}
   </div>
 </MainLayout>

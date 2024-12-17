@@ -1,5 +1,11 @@
 ---
-import Navbar from "../components/Navbar.astro";
+import Navbar from "@components/Navbar.astro";
+
+const { pageTitle } = Astro.props;
+
+interface Props {
+  pageTitle: string;
+}
 ---
 
 <!doctype html>
@@ -15,7 +21,7 @@ import Navbar from "../components/Navbar.astro";
       rel="stylesheet"
     />
     <meta name="generator" content={Astro.generator} />
-    <title>Moluska</title>
+    <title>{pageTitle} | Moluska</title>
   </head>
   <body>
     <Navbar />
