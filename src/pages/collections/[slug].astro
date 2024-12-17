@@ -3,9 +3,9 @@ import MainLayout from "@layouts/MainLayout.astro";
 import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
-  const datas = await fetch("http://localhost:4321/data.json").then((res) =>
-    res.json()
-  );
+  const datas = await fetch(
+    "https://furniture-katalog.vercel.app/data.json"
+  ).then((res) => res.json());
 
   return datas.map((data: any) => ({
     params: { slug: data.slug },
@@ -15,8 +15,8 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 
-const data = await fetch("http://localhost:4321/data.json").then((res) =>
-  res.json()
+const data = await fetch("https://furniture-katalog.vercel.app/data.json").then(
+  (res) => res.json()
 );
 
 const myData = data.find((entry: any) => entry.slug === slug);
@@ -27,7 +27,7 @@ if (!myData) {
 
 const content: any = myData;
 
-export const prerender = true;
+export const prerender = false;
 ---
 
 <MainLayout pageTitle={content.title}>
