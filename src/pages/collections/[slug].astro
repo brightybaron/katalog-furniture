@@ -1,6 +1,7 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
 import { Image } from "astro:assets";
+import { IoCartOutline } from "react-icons/io5";
 
 export async function getStaticPaths() {
   const datas = await fetch(
@@ -31,12 +32,13 @@ export const prerender = false;
 ---
 
 <MainLayout pageTitle={content.title}>
+  <div class="h-12"></div>
   <h1
-    class="sm:text-4xl text-3xl font-bold text-slate-800 after:content-[''] after:block after:border-b-4 after:border-b-slate-300 after:mt-1 w-fit"
+    class="sm:text-4xl text-3xl font-bold text-slate-800 after:content-[''] after:block after:border-b-4 after:border-b-slate-300 after:mt-1 after:ms-4 w-fit"
   >
     {content.title}
   </h1>
-  <div class="grid sm:grid-cols-3 grid-cols-1 mt-4">
+  <div class="grid sm:grid-cols-3 grid-cols-1 mt-4 gap-4">
     <div class="col-span-1 mx-auto max-w-[300px] w-full h-full">
       <Image
         src={content.picture}
@@ -46,17 +48,35 @@ export const prerender = false;
         class="aspect-square object-cover w-full h-full"
       />
     </div>
-    <div class="container col-span-2 sm:mt-0 mt-4">
-      <p class="mb-2 font-bold tracking-tight text-slate-600 list-item">
-        Harga :
-        <span class="text-teal-700 underline">
-          Rp. {content.harga}
-        </span>
-      </p>
-      <p class="font-bold tracking-tight text-slate-600 list-item">Deskripsi</p>
-      <p class="text-slate-600 text-sm">
-        {content.deskripsi}
-      </p>
+    <div
+      class="container col-span-2 sm:mt-0 mt-4 h-full flex flex-col justify-between"
+    >
+      <div>
+        <p class="font-bold tracking-tight text-slate-600 list-item">
+          Harga :
+          <span
+            class="text-teal-600 inline-block after:content-[''] after:block after:border-b-2 after:border-b-slate-300 w-fit"
+          >
+            Rp. {content.harga}
+          </span>
+        </p>
+        <div>
+          <p class="font-bold tracking-tight text-slate-600 list-item">
+            Deskripsi
+          </p>
+          <p class="text-slate-600 text-sm">
+            {content.deskripsi}
+          </p>
+        </div>
+      </div>
+      <a
+        class="mt-8 inline-flex items-center text-center w-fit px-4 py-2 bg-teal-900 hover:bg-teal-700 text-white rounded-lg font-semibold self-start"
+        href={`https://wa.me/628212345678/?text=Hi%20Admin%20Moluska%20Saya%20mau%20tanya%20tentang%20${content.title || ""}`}
+        target="_blank"
+      >
+        <IoCartOutline className="inline-block me-1" />
+        Order
+      </a>
     </div>
   </div>
 </MainLayout>

@@ -1,8 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import { slugify } from "@lib/utils";
+import { IoPricetagsOutline } from "react-icons/io5";
 
-const { picture, title, urutan, deskripsi } = Astro.props;
+const { picture, title, urutan, deskripsi, harga } = Astro.props;
 const { pathname } = Astro.url;
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
   deskripsi: string;
   title: string;
   urutan: number;
+  harga: string;
 }
 ---
 
@@ -51,10 +53,21 @@ interface Props {
       <p
         class:list={[
           "mb-2 font-normal text-gray-700 text-xs text-justify",
-          pathname !== "/" ? "truncate" : "",
+          pathname !== "/" ? "hidden" : "",
         ]}
       >
         {deskripsi}
+      </p>
+      <p
+        class:list={[
+          "mb-2 font-bold tracking-tight text-slate-600 after:content-[''] after:block after:border-b-2 after:border-b-slate-300 w-fit",
+          pathname !== "/" ? "" : "hidden",
+        ]}
+      >
+        <IoPricetagsOutline className="inline-block me-1" />
+        <span class="text-teal-700">
+          Rp. {harga}
+        </span>
       </p>
       <a
         href={`/collections/${slugify(title)}`}
