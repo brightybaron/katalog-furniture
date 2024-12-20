@@ -30,17 +30,12 @@ interface Props {
       class="aspect-square block overflow-hidden"
     >
       <Image
-        src={picture}
-        alt={`${title} image`}
+        src={picture[0]}
+        alt={`${title} main image`}
         height={400}
         width={400}
         class="aspect-square object-cover w-full h-full"
       />
-      <!-- <img
-        src={picture}
-        alt=""
-        class="aspect-square object-cover w-full h-full"
-      /> -->
     </a>
     <div class="p-2">
       <a href={`/collections/${slugify(title)}`}>
@@ -60,7 +55,7 @@ interface Props {
       </p>
       <p
         class:list={[
-          "mb-2 font-bold tracking-tight text-slate-600 after:content-[''] after:block after:border-b-2 after:border-b-slate-300 w-fit",
+          "mb-2 font-bold tracking-tight text-slate-600 after:content-[''] after:block after:border-b-2 after:border-b-slate-300 w-fit sm:text-base text-sm",
           pathname !== "/" ? "" : "hidden",
         ]}
       >
