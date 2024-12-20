@@ -39,14 +39,31 @@ export const prerender = false;
     {content.title}
   </h1>
   <div class="grid sm:grid-cols-3 grid-cols-1 mt-4 gap-4">
-    <div class="col-span-1 mx-auto max-w-[300px] w-full h-full">
-      <Image
-        src={content.picture}
-        alt={`${content.title} image`}
-        width={400}
-        height={400}
-        class="aspect-square object-cover w-full h-full"
-      />
+    <div class="col-span-1 mx-auto max-w-[300px] grid gap-y-2 w-full h-full">
+      <div class="overflow-hidden">
+        <Image
+          src={content.picture[0]}
+          alt={`${content.title} image header`}
+          width={400}
+          height={400}
+          class="aspect-square object-cover w-full h-full hover:scale-[102%] duration-300"
+        />
+      </div>
+      <div class="grid grid-cols-3 gap-x-2 overflow-hidden">
+        {
+          content.picture
+            .slice(1)
+            .map((item: any) => (
+              <Image
+                src={item}
+                alt={`${item} image ${content.picture.indexOf(item)}`}
+                width={400}
+                height={400}
+                class="aspect-square object-cover w-full h-full hover:scale-105 duration-300"
+              />
+            ))
+        }
+      </div>
     </div>
     <div
       class="container col-span-2 sm:mt-0 mt-4 h-full flex flex-col justify-between"
