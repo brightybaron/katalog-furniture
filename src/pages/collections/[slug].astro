@@ -49,19 +49,33 @@ export const prerender = false;
           class="aspect-square object-cover w-full h-full hover:scale-[102%] duration-300"
         />
       </div>
-      <div class="grid grid-cols-3 gap-x-2 overflow-hidden">
+      <div>
         {
-          content.picture
-            .slice(1)
-            .map((item: any) => (
-              <Image
-                src={item}
-                alt={`${item} image ${content.picture.indexOf(item)}`}
-                width={400}
-                height={400}
-                class="aspect-square object-cover w-full h-full hover:scale-105 duration-300"
-              />
-            ))
+          content.picture.length > 4 ? (
+            <div class="grid grid-flow-col auto-cols-[33.33%] gap-x-2 overflow-x-scroll custom-scrollbar">
+              {content.picture.slice(1).map((item: any, index: number) => (
+                <Image
+                  src={item}
+                  alt={`${item} image ${index + 1}`}
+                  width={400}
+                  height={400}
+                  class="aspect-square object-cover w-full h-full"
+                />
+              ))}
+            </div>
+          ) : (
+            <div class="grid grid-cols-3 gap-x-2 overflow-hidden">
+              {content.picture.slice(1).map((item: any) => (
+                <Image
+                  src={item}
+                  alt={`${item} image ${content.picture.indexOf(item)}`}
+                  width={400}
+                  height={400}
+                  class="aspect-square object-cover w-full h-full hover:scale-105 duration-300"
+                />
+              ))}
+            </div>
+          )
         }
       </div>
     </div>
@@ -97,3 +111,28 @@ export const prerender = false;
     </div>
   </div>
 </MainLayout>
+
+<style>
+  .custom-scrollbar {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #a0aec0 transparent; /* Color for Firefox */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 4px; /* Scrollbar height */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent; /* Track background */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #a0aec0; /* Thumb color */
+    border-radius: 10px; /* Rounded corners */
+    border: none; /* Optional for no border */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #718096; /* Thumb color on hover */
+  }
+</style>
