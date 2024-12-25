@@ -3,14 +3,14 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 type Image = {
   url: string;
-  // title: string;
 };
 
 type LightboxProps = {
   images: Image[];
+  title: string;
 };
 
-const LightboxGaleri = ({ images }: LightboxProps) => {
+const LightboxGaleri = ({ images, title }: LightboxProps) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -40,29 +40,28 @@ const LightboxGaleri = ({ images }: LightboxProps) => {
     }
   };
 
-
   return (
     <>
       {images.map((image, index) => (
-        <div key={index} className="max-h-full aspect-[3/2] mx-auto">
+        <div key={index} className="max-h-full aspect-square mx-auto">
           <img
-            className="block h-full aspect-[3/2] object-cover rounded mx-auto hover:scale-105 transition-all duration-200 hover:opacity-50 cursor-pointer"
+            className="block h-full aspect-square object-cover rounded mx-auto transition-all duration-200 hover:opacity-50 cursor-pointer"
             src={`${image.url}`}
-            alt={`Image ${index + 1}`}
+            alt={`${title} ${index + 1}`}
             onClick={() => openLightbox(index)}
           />
         </div>
       ))}
       {isOpen && (
         <div
-          className="lightbox-overlay fixed top-0 left-0 w-full h-screen bg-[rgba(0,0,0,0.8)] flex justify-center items-center z-[1056]"
+          className="mt-16 lightbox-overlay fixed top-0 left-0 w-full h-screen bg-[rgba(0,0,0,0.8)] flex justify-center items-center z-50"
           onClick={handleOverlayClick}
         >
           <div className="lightbox-container p-5 rounded-xl shadow w-[90%] max-w-[800px] my-8 mx-auto">
             <img
               className="w-full h-screen object-contain"
               src={`${images[currentIndex].url}`}
-              alt={`Image ${currentIndex + 1}`}
+              alt={`${title} ${currentIndex + 1}`}
             />
           </div>
           <div className="absolute w-full h-screen">

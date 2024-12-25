@@ -1,4 +1,5 @@
 ---
+import Lightbox from "@components/Lightbox";
 import MainLayout from "@layouts/MainLayout.astro";
 import { Image } from "astro:assets";
 import { IoCartOutline } from "react-icons/io5";
@@ -54,29 +55,23 @@ export const prerender = false;
         {
           content.picture.length > 4 ? (
             <div class="grid grid-flow-col auto-cols-[33.33%] gap-x-2 overflow-x-scroll custom-scrollbar">
-              {content.picture.slice(1).map((item: any, index: number) => (
-                <Image
-                  src={item}
-                  alt={`${item}-${index + 1}`}
-                  width={400}
-                  height={400}
-                  loading={"lazy"}
-                  class="aspect-square object-cover w-full h-full"
-                />
-              ))}
+              <Lightbox
+                client:idle
+                images={content.picture
+                  .slice(1)
+                  .map((url: string) => ({ url }))}
+                title={content.title}
+              />
             </div>
           ) : (
             <div class="grid grid-cols-3 gap-x-2 overflow-hidden">
-              {content.picture.slice(1).map((item: any) => (
-                <Image
-                  src={item}
-                  alt={`${item}-${content.picture.indexOf(item)}`}
-                  width={400}
-                  height={400}
-                  loading={"lazy"}
-                  class="aspect-square object-cover w-full h-full hover:scale-105 duration-300"
-                />
-              ))}
+              <Lightbox
+                client:idle
+                images={content.picture
+                  .slice(1)
+                  .map((url: string) => ({ url }))}
+                title={content.title}
+              />
             </div>
           )
         }
@@ -113,6 +108,11 @@ export const prerender = false;
       </a>
     </div>
   </div>
+  <!-- <div
+    class="grid grid-flow-col auto-cols-[33.33%] gap-x-2 overflow-x-scroll custom-scrollbar"
+  >
+    <Lightbox client:idle images={lightboximages} />
+  </div> -->
 </MainLayout>
 
 <style>
