@@ -1,5 +1,6 @@
 ---
 import Card from "@components/Card.astro";
+import TitleHeading from "@components/TitleHeading.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 
 const content = await fetch(
@@ -12,47 +13,12 @@ const content = await fetch(
 });
 
 const data = content.slice(0, 4);
-
-// const data = [
-//   {
-//     title: "Sofa",
-//     slug: "sofa",
-//     picture: "/image/furnitur-1.jpg",
-//     deskripsi:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-//     harga: "1.000.000",
-//   },
-//   {
-//     title: "Sofa Set",
-//     slug: "sofa-set",
-//     picture: "/image/furnitur-2.jpg",
-//     deskripsi:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-//     harga: "1.000.000",
-//   },
-//   {
-//     title: "Kursi",
-//     slug: "kursi",
-//     picture: "/image/furnitur-3.jpg",
-//     deskripsi:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-//     harga: "1.000.000",
-//   },
-//   {
-//     title: "Meja Set",
-//     slug: "meja-set",
-//     picture: "/image/furnitur-4.jpg",
-//     deskripsi:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-//     harga: "1.000.000",
-//   },
-// ];
 ---
 
 <MainLayout pageTitle="Home">
   <div class="flex flex-wrap sm:flex-nowrap max-w-2xl gap-4 items-start mt-12">
     <div>
-      <h1 class="sm:text-5xl text-4xl font-bold text-slate-800">Moluska</h1>
+      <TitleHeading title="Moluska" />
     </div>
     <div class="text-slate-600 text-sm">
       <p class="mb-4">

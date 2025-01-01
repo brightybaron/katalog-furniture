@@ -17,7 +17,10 @@ interface Props {
 
 <div class="relative max-w-xs shadow">
   <div
-    class="absolute top-0 right-0 ml-auto sm:w-12 sm:h-12 w-8 h-8 bg-white z-[15]"
+    class:list={[
+      "absolute top-0 right-0 ml-auto sm:w-12 sm:h-12 w-8 h-8 bg-white z-[2]",
+      pathname === "/search" ? "hidden" : "",
+    ]}
   >
     <span
       class="w-full h-full flex justify-center items-center text-slate-800 text-base font-bold"
@@ -30,7 +33,9 @@ interface Props {
       class="aspect-square block overflow-hidden"
     >
       <Image
-        src={picture[0]}
+        src={pathname === "/search" || pathname === "/collections"
+          ? picture
+          : picture[0]}
         alt={`${title} main`}
         height={400}
         width={400}
@@ -82,7 +87,7 @@ interface Props {
             stroke-width="2"
             d="M1 5h12m0 0L9 1m4 4L9 9"></path>
         </svg>
-        Learn more
+        See more
       </a>
     </div>
   </div>

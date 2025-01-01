@@ -1,14 +1,13 @@
 ---
+import TitleHeading from "@components/TitleHeading.astro";
 import MainLayout from "@layouts/MainLayout.astro";
+
+const title = "Studio";
 ---
 
-<MainLayout pageTitle="Studio">
+<MainLayout pageTitle={title}>
   <div class="max-w-lg">
-    <h1
-      class="sm:text-4xl text-3xl font-bold text-slate-800 after:content-[''] after:block after:border-b-4 after:border-b-slate-300 after:mt-1 w-fit"
-    >
-      Studio
-    </h1>
+    <TitleHeading title={title} />
     <p class="text-slate-600 text-sm mt-4">
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi totam
       repellendus, pariatur, vero vitae sapiente doloribus accusamus asperiores

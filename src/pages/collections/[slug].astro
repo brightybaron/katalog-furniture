@@ -1,5 +1,6 @@
 ---
 import Lightbox from "@components/Lightbox";
+import TitleHeading from "@components/TitleHeading.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import { Image } from "astro:assets";
 import { IoCartOutline } from "react-icons/io5";
@@ -34,11 +35,7 @@ export const prerender = false;
 
 <MainLayout pageTitle={content.title}>
   <div class="h-12"></div>
-  <h1
-    class="sm:text-4xl text-3xl font-bold text-slate-800 after:content-[''] after:block after:border-b-4 after:border-b-slate-300 after:mt-1 after:ms-4 w-fit"
-  >
-    {content.title}
-  </h1>
+  <TitleHeading title={content.title} />
   <div class="grid sm:grid-cols-3 grid-cols-1 mt-4 gap-4">
     <div class="col-span-1 mx-auto max-w-[300px] grid gap-y-2 w-full h-full">
       <div class="overflow-hidden">
@@ -58,13 +55,11 @@ export const prerender = false;
       </div>
       <div>
         {
-          content.picture.length > 4 ? (
+          content.picture.length >= 4 ? (
             <div class="grid grid-flow-col auto-cols-[33.33%] gap-x-2 overflow-x-scroll custom-scrollbar">
               <Lightbox
                 client:idle
-                images={content.picture
-                  .slice(1)
-                  .map((url: string) => ({ url }))}
+                images={content.picture.map((url: string) => ({ url }))}
                 title={content.title}
               />
             </div>
@@ -72,9 +67,7 @@ export const prerender = false;
             <div class="grid grid-cols-3 gap-x-2 overflow-hidden">
               <Lightbox
                 client:idle
-                images={content.picture
-                  .slice(1)
-                  .map((url: string) => ({ url }))}
+                images={content.picture.map((url: string) => ({ url }))}
                 title={content.title}
               />
             </div>

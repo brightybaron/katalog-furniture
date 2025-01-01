@@ -27,7 +27,8 @@ interface Props {
     <Navbar />
 
     <main class="flex">
-      <aside class="mx-auto pl-4 sm:block hidden w-full max-w-[13vw]">
+      <!-- Left Sidebar -->
+      <aside class="mx-auto pl-4 lg:block hidden w-full max-w-[13vw] z-[2]">
         <section class="sm:flex hidden text-sm h-screen fixed items-center">
           <div class="w-full" id="side-nav">
             <div class="flex flex-col gap-y-4">
@@ -60,13 +61,14 @@ interface Props {
           </div>
         </section>
       </aside>
+      <!-- Content -->
       <section class="container w-full mt-16">
         <div class="relative">
           <div
             class="fixed top-0 right-0 mt-16 ml-auto sm:w-36 w-12 h-[50dvh] bg-slate-200 rounded-l-xl -z-10"
           >
           </div>
-          <div class="relative z-[9]">
+          <div>
             <slot />
           </div>
           <div

@@ -1,66 +1,66 @@
 [
-    {
-        "title": "Sofa",
-        "slug": "sofa",
-        "picture": [
-          "/image/furnitur-1.jpg",
-          "/image/furnitur-2.jpg",
-          "/image/furnitur-3.jpg",
-          "/image/furnitur-5.jpg"],
-        "deskripsi":
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-        "harga": "1.000.000"
-      },
-      {
-        "title": "Sofa Set",
-        "slug": "sofa-set",
-        "picture": [
-          "/image/furnitur-1.jpg",
-          "/image/furnitur-2.jpg",
-          "/image/furnitur-3.jpg",
-          "/image/furnitur-4.jpg",
-          "/image/furnitur-5.jpg"],
-        "deskripsi":
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-        "harga": "1.000.000"
-      },
-      {
-        "title": "Kursi",
-        "slug": "kursi",
-        "picture": [
-          "/image/furnitur-1.jpg",
-          "/image/furnitur-2.jpg",
-          "/image/furnitur-3.jpg",
-          "/image/furnitur-4.jpg",
-          "/image/furnitur-5.jpg"],
-        "deskripsi":
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-        "harga": "1.000.000"
-      },
-      {
-        "title": "Meja Set",
-        "slug": "meja-set",
-        "picture": [
-          "/image/furnitur-1.jpg",
-          "/image/furnitur-2.jpg",
-          "/image/furnitur-3.jpg",
-          "/image/furnitur-4.jpg",
-          "/image/furnitur-5.jpg"],
-        "deskripsi":
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-        "harga": "1.000.000"
-      },
-      {
-        "title": "Chair",
-        "slug": "chair",
-        "picture": [
-          "/image/furnitur-1.jpg",
-          "/image/furnitur-2.jpg",
-          "/image/furnitur-3.jpg",
-          "/image/furnitur-4.jpg",
-          "/image/furnitur-5.jpg"],
-        "deskripsi":
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-        "harga": "1.000.000"
-      }
+  {
+    "title": "Sofa",
+    "slug": "sofa",
+    "picture": [
+      "/image/furnitur-1.jpg",
+      "/image/furnitur-2.jpg",
+      "/image/furnitur-3.jpg",
+      "/image/furnitur-5.jpg"
+    ],
+    "deskripsi": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
+    "harga": "1.000.000"
+  },
+  {
+    "title": "Sofa Set",
+    "slug": "sofa-set",
+    "picture": [
+      "/image/furnitur-1.jpg",
+      "/image/furnitur-2.jpg",
+      "/image/furnitur-3.jpg",
+      "/image/furnitur-4.jpg",
+      "/image/furnitur-5.jpg"
+    ],
+    "deskripsi": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
+    "harga": "1.000.000"
+  },
+  {
+    "title": "Kursi",
+    "slug": "kursi",
+    "picture": [
+      "/image/furnitur-1.jpg",
+      "/image/furnitur-2.jpg",
+      "/image/furnitur-3.jpg",
+      "/image/furnitur-4.jpg",
+      "/image/furnitur-5.jpg"
+    ],
+    "deskripsi": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
+    "harga": "1.000.000"
+  },
+  {
+    "title": "Meja Set",
+    "slug": "meja-set",
+    "picture": [
+      "/image/furnitur-1.jpg",
+      "/image/furnitur-2.jpg",
+      "/image/furnitur-3.jpg",
+      "/image/furnitur-4.jpg",
+      "/image/furnitur-5.jpg"
+    ],
+    "deskripsi": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
+    "harga": "1.000.000"
+  },
+  {
+    "title": "Chair",
+    "slug": "chair",
+    "picture": [
+      "/image/furnitur-1.jpg",
+      "/image/furnitur-2.jpg",
+      "/image/furnitur-3.jpg",
+      "/image/furnitur-4.jpg",
+      "/image/furnitur-5.jpg"
+    ],
+    "deskripsi": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
+    "harga": "1.000.000"
+  }
 ]

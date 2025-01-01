@@ -1,56 +1,55 @@
 ---
+import Card from "@components/Card.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 
-const url = new URL(Astro.request.url);
-console.log("Parsed URL:", url);
+async function getPost(searchQuery: any) {
+  try {
+    const response = await fetch(
+      "https://furniture-katalog.vercel.app/data.json"
+    );
+    const data = await response.json();
 
-const searchQuery = url.searchParams.get("q") || "";
-console.log("Search Query:", searchQuery);
-console.log("Search Params:", url.searchParams.get("q"));
+    // Map to extract necessary fields
+    const processedData = data.map((item: any) => ({
+      title: item.title,
+      slug: item.slug,
+      picture: item.picture[0],
+      deskripsi: item.deskripsi,
+      harga: item.harga,
+    }));
 
-let allData = [];
-try {
-  allData = await fetch(
-    "https://furniture-katalog.vercel.app/search.json"
-  ).then((res) => res.json());
-} catch (error) {
-  console.error("Failed to fetch data:", error);
+    // Filter results based on search query
+    return searchQuery
+      ? processedData.filter((item: any) =>
+          item.title.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      : [];
+  } catch (error) {
+    console.error("Failed to fetch data:", error);
+    return [];
+  }
 }
-// console.log("API Data:", allData);
 
-const searchResults = searchQuery
-  ? allData.filter((item: any) =>
-      item.title.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-  : [];
-console.log("Filtered Results:", searchResults);
+const url = new URL(Astro.request.url);
+const searchQuery = url.searchParams.get("q") || "";
+const searchResults = await getPost(searchQuery);
+console.log(searchQuery);
+console.log(searchResults);
+console.log(url);
 
 const pageTitle = `Search Results for "${searchQuery}"`;
-console.log("Full URL:", Astro.request.url);
 ---
 
-<MainLayout pageTitle="Search">
+<MainLayout pageTitle={`Search for ${searchQuery}`}>
   <h1 class="text-2xl font-semibold text-slate-700">
     {pageTitle || "Search Results"}
   </h1>
-  <ul class="mt-8 space-y-4">
+  <div class="mt-8 grid sm:grid-cols-4 grid-cols-2 gap-4">
     {
       searchQuery ? (
         searchResults.length > 0 ? (
           // Display search results
-          searchResults.map((result: any) => (
-            <li class="p-4 bg-white border border-gray-200 rounded-lg shadow">
-              <a
-                href={`/collections/${result.slug || "#"}`}
-                class="text-lg font-bold text-slate-800 hover:underline"
-              >
-                {result.title || "Untitled"}
-              </a>
-              <p class="text-sm text-slate-600">
-                {result.deskripsi || "No description available"}
-              </p>
-            </li>
-          ))
+          searchResults.map((result: any) => <Card {...result} />)
         ) : (
           <div class="text-slate-600">
             No results found for "{searchQuery}".
@@ -60,23 +59,5 @@ console.log("Full URL:", Astro.request.url);
         <div class="text-slate-600">Please enter a search term.</div>
       )
     }
-
-    <!-- {
-      searchResults.length > 0 ? (
-        searchResults.map((result: any) => (
-          <li class="p-4 bg-white border border-gray-200 rounded-lg shadow">
-            <a
-              href={`/collections/${result.slug}`}
-              class="text-lg font-bold text-slate-800 hover:underline"
-            >
-              {result.title}
-            </a>
-            <p class="text-sm text-slate-600">{result.deskripsi}</p>
-          </li>
-        ))
-      ) : (
-        <div class="text-slate-600">No results found.</div>
-      )
-    } -->
-  </ul>
+  </div>
 </MainLayout>

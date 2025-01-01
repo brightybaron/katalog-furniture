@@ -1,19 +1,42 @@
 ---
 import Card from "@components/Card.astro";
+import TitleHeading from "@components/TitleHeading.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 
-const data = await fetch("https://furniture-katalog.vercel.app/data.json").then(
-  (res) => res.json()
-);
+// const data = await fetch("https://furniture-katalog.vercel.app/data.json").then(
+//   (res) => res.json()
+// );
+
+async function getPost() {
+  try {
+    const response = await fetch("http://localhost:4321/data.json");
+    const data = await response.json();
+
+    // Map to extract necessary fields
+    const processedData = data.map((item: any) => ({
+      title: item.title,
+      slug: item.slug,
+      picture: item.picture[0],
+      harga: item.harga,
+    }));
+
+    // Filter results based on search query
+    return processedData;
+  } catch (error) {
+    console.error("Failed to fetch data:", error);
+    return [];
+  }
+}
+
+const data = await getPost();
+console.log(data);
+
+const title = "Collections";
 ---
 
-<MainLayout pageTitle="Collections">
+<MainLayout pageTitle={title}>
   <div class="max-w-lg">
-    <h1
-      class="sm:text-4xl text-3xl font-bold text-slate-800 after:content-[''] after:block after:border-b-4 after:border-b-slate-300 after:mt-1 w-fit"
-    >
-      Our Collections
-    </h1>
+    <TitleHeading title={title} />
   </div>
   <div class="container grid sm:grid-cols-4 grid-cols-2 gap-4 mt-12 pb-8">
     {

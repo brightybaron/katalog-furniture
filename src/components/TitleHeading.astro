@@ -1,0 +1,17 @@
+---
+const { pathname } = Astro.url;
+const { title } = Astro.props;
+
+interface Props {
+  title: string;
+}
+---
+
+<h1
+  class:list={[
+    "font-bold text-slate-800 after:content-[''] after:block after:border-b-4 after:border-b-slate-300 after:mt-1 after:ms-4 w-fit",
+    pathname === "/" ? "sm:text-5xl text-3xl" : "sm:text-4xl text-3xl ",
+  ]}
+>
+  {title}
+</h1>
