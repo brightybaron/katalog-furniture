@@ -3,7 +3,7 @@ import Card from "@components/Card.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 
 const content = await fetch(
-  "https://furniture-katalog.vercel.app/data.json"
+  "https://furniture-katalog.vercel.app/search.json"
 ).then((res) => {
   if (!res.ok) {
     throw new Error(`HTTP error! status: ${res.status}`);

@@ -1,58 +1,10 @@
 ---
 import Card from "@components/Card.astro";
 import MainLayout from "@layouts/MainLayout.astro";
-import gbr1 from "@assets/image/furnitur-1.jpg";
-import gbr2 from "@assets/image/furnitur-2.jpg";
-import gbr3 from "@assets/image/furnitur-3.jpg";
-import gbr4 from "@assets/image/furnitur-4.jpg";
-import gbr5 from "@assets/image/furnitur-5.jpg";
 
 const data = await fetch("https://furniture-katalog.vercel.app/data.json").then(
   (res) => res.json()
 );
-
-// const data = [
-//   {
-//     title: "Sofa",
-//     slug: "sofa",
-//     picture: "/image/furnitur-1.jpg",
-//     deskripsi:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-//     harga: "1.000.000",
-//   },
-//   {
-//     title: "Sofa Set",
-//     slug: "sofa-set",
-//     picture: "/image/furnitur-2.jpg",
-//     deskripsi:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-//     harga: "1.000.000",
-//   },
-//   {
-//     title: "Kursi",
-//     slug: "kursi",
-//     picture: "/image/furnitur-3.jpg",
-//     deskripsi:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-//     harga: "1.000.000",
-//   },
-//   {
-//     title: "Meja Set",
-//     slug: "meja-set",
-//     picture: "/image/furnitur-4.jpg",
-//     deskripsi:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-//     harga: "1.000.000",
-//   },
-//   {
-//     title: "Chair",
-//     slug: "chair",
-//     picture: "/image/furnitur-5.jpg",
-//     deskripsi:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-//     harga: "1.000.000",
-//   },
-// ];
 ---
 
 <MainLayout pageTitle="Collections">

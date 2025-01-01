@@ -1,0 +1,50 @@
+<form
+  method="GET"
+  action="/search"
+  class="form sm:max-w-64 max-w-32 mx-auto sm:mr-0 mr-4"
+>
+  <label for="default-search" class="sr-only">Search</label>
+  <div class="relative">
+    <input
+      type="text"
+      id="default-search"
+      name="q"
+      class="block w-full px-4 py-2 text-sm focus:ring-gray-400 focus:border-gray-400 bg-slate-200 border border-gray-200 placeholder-slate-400 text-slate-600 rounded-full"
+      placeholder="Search"
+      required
+    />
+    <button
+      type="submit"
+      aria-label="Search"
+      class="absolute right-2 top-1/2 transform -translate-y-1/2 focus:ring-4 focus-visible:outline-none focus:ring-gray-600 font-medium rounded-full text-sm px-4 py-2"
+    >
+      <svg
+        class="w-4 h-4 text-slate-500"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 20 20"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
+      </svg>
+    </button>
+  </div>
+</form>
+
+<!-- <script>
+  const form = document.querySelector("form");
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const searchTerm = formData.get("search")?.toString();
+    if (!searchTerm || searchTerm.length === 0) return;
+    const url = new URL("search", window.location.origin);
+    url.searchParams.set("q", searchTerm);
+    window.location.assign(url.toString());
+  });
+</script> -->

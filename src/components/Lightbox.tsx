@@ -45,9 +45,12 @@ const LightboxGaleri = ({ images, title }: LightboxProps) => {
       {images.map((image, index) => (
         <div key={index} className="max-h-full aspect-square mx-auto">
           <img
-            className="block h-full aspect-square object-cover rounded mx-auto transition-all duration-200 hover:opacity-50 cursor-pointer"
+            className="block w-full h-full aspect-square object-cover rounded mx-auto transition-all duration-200 hover:opacity-75 cursor-pointer"
             src={`${image.url}`}
             alt={`${title} ${index + 1}`}
+            height={400}
+            width={400}
+            loading="lazy"
             onClick={() => openLightbox(index)}
           />
         </div>

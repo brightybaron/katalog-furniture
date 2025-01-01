@@ -42,14 +42,19 @@ export const prerender = false;
   <div class="grid sm:grid-cols-3 grid-cols-1 mt-4 gap-4">
     <div class="col-span-1 mx-auto max-w-[300px] grid gap-y-2 w-full h-full">
       <div class="overflow-hidden">
-        <Image
+        <Lightbox
+          client:idle
+          images={[{ url: content.picture[0] }]}
+          title={content.title}
+        />
+        <!-- <Image
           src={content.picture[0]}
           alt={`${content.title}-main`}
           width={400}
           height={400}
           loading={"lazy"}
           class="aspect-square object-cover w-full h-full hover:scale-[102%] duration-300"
-        />
+        /> -->
       </div>
       <div>
         {
@@ -98,21 +103,83 @@ export const prerender = false;
           </p>
         </div>
       </div>
-      <a
-        class="mt-8 inline-flex items-center text-center w-fit px-4 py-2 bg-teal-900 hover:bg-teal-700 text-white rounded-lg font-semibold self-start"
-        href={`https://wa.me/628212345678/?text=Hi%20Admin%20Moluska%20Saya%20mau%20tanya%20tentang%20${content.title || ""}`}
-        target="_blank"
-      >
-        <IoCartOutline className="inline-block me-1" />
-        Order
-      </a>
+
+      <!-- Dropdown menu -->
+      <div class="relative inline-block">
+        <button
+          id="dropdownDefaultButton"
+          class="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-4 py-2.5 text-center inline-flex items-center"
+          type="button"
+        >
+          <IoCartOutline className="inline-block me-1" /> Order
+        </button>
+
+        <!-- Dropdown menu -->
+        <div
+          id="dropdown"
+          class="z-10 hidden absolute bottom-full mb-2 bg-gray-200 divide-y divide-gray-100 rounded-lg shadow w-44"
+        >
+          <ul
+            class="py-2 text-sm text-gray-700"
+            aria-labelledby="dropdownDefaultButton"
+          >
+            <li>
+              <a
+                href="https://shopee.co.id/"
+                target="_blank"
+                referrerpolicy="no-referrer"
+                class="block px-4 py-2 hover:bg-gray-600 hover:text-white"
+                >Shopee</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://tokopedia.com/"
+                target="_blank"
+                referrerpolicy="no-referrer"
+                class="block px-4 py-2 hover:bg-gray-600 hover:text-white"
+                >Tokopedia</a
+              >
+            </li>
+            <li>
+              <a
+                href={`https://wa.me/628212345678/?text=Hi%20Admin%20Moluska%20Saya%20mau%20tanya%20tentang%20${content.title || ""}`}
+                class="block px-4 py-2 hover:bg-gray-600 hover:text-white"
+                >Chat Admin</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- <div class="flex gap-2">
+        <a
+          class="mt-8 inline-flex items-center text-center w-fit px-4 py-2 bg-teal-900 hover:bg-teal-700 text-white rounded-lg font-semibold self-start"
+          href={`https://wa.me/628212345678/?text=Hi%20Admin%20Moluska%20Saya%20mau%20tanya%20tentang%20${content.title || ""}`}
+          target="_blank"
+        >
+          <IoCartOutline className="inline-block me-1" />
+          Shopoo
+        </a>
+        <a
+          class="mt-8 inline-flex items-center text-center w-fit px-4 py-2 bg-teal-900 hover:bg-teal-700 text-white rounded-lg font-semibold self-start"
+          href={`https://wa.me/628212345678/?text=Hi%20Admin%20Moluska%20Saya%20mau%20tanya%20tentang%20${content.title || ""}`}
+          target="_blank"
+        >
+          <IoCartOutline className="inline-block me-1" />
+          Tokopakedi
+        </a>
+        <a
+          class="mt-8 inline-flex items-center text-center w-fit px-4 py-2 bg-teal-900 hover:bg-teal-700 text-white rounded-lg font-semibold self-start"
+          href={`https://wa.me/628212345678/?text=Hi%20Admin%20Moluska%20Saya%20mau%20tanya%20tentang%20${content.title || ""}`}
+          target="_blank"
+        >
+          <IoCartOutline className="inline-block me-1" />
+          Order
+        </a>
+      </div> -->
     </div>
   </div>
-  <!-- <div
-    class="grid grid-flow-col auto-cols-[33.33%] gap-x-2 overflow-x-scroll custom-scrollbar"
-  >
-    <Lightbox client:idle images={lightboximages} />
-  </div> -->
 </MainLayout>
 
 <style>
@@ -139,3 +206,26 @@ export const prerender = false;
     background-color: #718096; /* Thumb color on hover */
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const dropdownButton = document.getElementById(
+      "dropdownDefaultButton"
+    ) as HTMLElement;
+    const dropdownMenu = document.getElementById("dropdown") as HTMLElement;
+
+    dropdownButton.addEventListener("click", () => {
+      dropdownMenu.classList.toggle("hidden");
+    });
+
+    // Close the dropdown if clicked outside
+    document.addEventListener("click", (event: any) => {
+      if (
+        !dropdownButton.contains(event.target) &&
+        !dropdownMenu.contains(event.target)
+      ) {
+        dropdownMenu.classList.add("hidden");
+      }
+    });
+  });
+</script>

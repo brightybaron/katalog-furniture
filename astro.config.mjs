@@ -1,8 +1,8 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-import react from '@astrojs/react';
-import vercel from '@astrojs/vercel';
+import { defineConfig } from "astro/config";
+import tailwind from "@astrojs/tailwind";
+import react from "@astrojs/react";
+import vercel from "@astrojs/vercel";
 
 const SERVER_PORT = 4321;
 // the url to access your blog during local development
@@ -21,10 +21,10 @@ if (isBuild) {
 // https://astro.build/config
 export default defineConfig({
   server: {
-    port: SERVER_PORT
+    port: SERVER_PORT,
   },
-
   site: BASE_URL,
   integrations: [tailwind(), react()],
-  adapter: vercel()
+  adapter: vercel(),
+  output: "server",
 });
